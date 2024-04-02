@@ -1,5 +1,5 @@
-AHVER8.ino  is Code for an artificial horizon display, Welch 1/16/24
-This sketch uses  Bodmer’s  TFT display code and New UW Mahony AHRS for the LSM9DS1 - S.J. Remington 3/2021. I ran both  of these programs separately at first to get 1st the display working with Bodmers AHD test code – no sensor attached, then the UW Mahony to talk to the sensor and make sure that was working ok. I then merged the two sketches and tweaked the display for proper operation. 
+AHVER9.ino  is Code for an artificial horizon display, Welch 4/2/24
+This sketch uses  Bodmerâ€™s  TFT display code and New UW Mahony AHRS for the LSM9DS1 - S.J. Remington 3/2021. I ran both  of these programs separately at first to get 1st the display working with Bodmers AHD test code â€“ no sensor attached, then the UW Mahony to talk to the sensor and make sure that was working ok. I then merged the two sketches and tweaked the display for proper operation. 
 Its setup for a 320 by 240 TFT display 
 The library for this is in TFT_IL19341 ( this is an Adafruit GFX modified by Bodmer)
 Uses  Arduino mega board
@@ -8,6 +8,7 @@ This sketch will not work right until the LSM9DS1 goes through a calibration. Ev
 Requires (Include) the Sparkfun LSM9DS1 library
 Standard sensor orientation X North (yaw=0), Y West, Z up
 NOTE: Sensor X axis is remapped to the opposite direction of the "X arrow" on the Adafruit sensor breakout!
+Note: Roll orientation was reversed so Ver 9 (roll *-1) fixes it. (line 271) 
 
 New Mahony filter error scheme uses Up (accel Z axis) and West (= Acc X Mag) as the orientation reference vectors
 heavily modified from http://www.x-io.co.uk/open-source-imu-and-ahrs-algorithms/
@@ -19,6 +20,6 @@ Break the Accelerometer and gyro data into one CSV file and the Magnetometer dat
 Run the two raw files through the Magneto .exe program (Running under Code blocks) to generate the calibration data.(I chose a deviation of 2 for bad data ignore). It took a while to understand how Magneto worked and to get it running correctly. 
 Copy and paste the calibration data obtained from Magneto into the  AHVER8.ino  program.
 Youtube video link  https://youtu.be/Dzm7vEwAZCk 
-I’ve found this sketch runs fairly slow for large pitch and roll changes. Planning on moving this over to a Teensy 4.0 board as it should run much faster. Also moving to a TFT parallel data input would help speed it up. 
+Iâ€™ve found this sketch runs fairly slow for large pitch and roll changes. Planning on moving this over to a Teensy 4.0 board as it should run much faster. Also moving to a TFT parallel data input would help speed it up. 
 
 
